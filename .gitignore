@@ -3,6 +3,8 @@
 
 env
 
+env_vars.py
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
