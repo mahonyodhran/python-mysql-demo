@@ -1,3 +1,5 @@
+'''Main driver for app
+'''
 from database.db_methods import selectQuery, insertQuery
 
 
