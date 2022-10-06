@@ -1,21 +1,23 @@
 '''Module for any database related methods
 '''
-from database.db_connection import my_sql_conn
+from sqlalchemy import select
+from database.db_connection import Session
+from models.user import User
 
 
-def insert_query(first_name, last_name, email):
-    '''insert record into table
+session = Session()
+
+def insert_user(user):
+    '''insert user record into table
     '''
-    values = [first_name, last_name, email]
-    my_sql_conn.execute(
-        "insert into user (first_name,last_name, email) values(%s,%s, %s)", values
-    )
+    session.add(user)
+    session.commit()
+    session.close()
 
 
-def select_query():
-    '''retrieve records from table
+def select_all_users():
+    '''retrieve all records from user table
     '''
-    query = my_sql_conn.execute("SELECT * FROM user;")
-    for row in query:
-        print(row)
-    query.close()
+    stmt = select(User)
+    for user in session.scalars(stmt):
+        print(user)
