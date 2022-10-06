@@ -1,9 +1,5 @@
-from db_connection import my_sql_conn
+from database.db_methods import selectQuery, insertQuery
 
-# result = my_sql_conn.execute("INSERT INTO instructor VALUES (ID,first_name, last_name, email, NULL)")
 
-query = my_sql_conn.execute('SELECT * FROM instructor;')
-for row in query:
-    print(row)
-    
-query.close()
+insertQuery('John', 'Doe', 'john@mail.com')
+selectQuery()
